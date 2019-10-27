@@ -1,0 +1,61 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GET</title>
+</head>
+
+<body>
+    <br><br><br><br><br>
+    <center>
+        <input type="text" id="page" placeholder="  Page">
+        <br><br>
+        <input type="text" id="name1" placeholder=" First Name">
+        <br><br>
+        <input type="text" id="name2" placeholder=" Last Name">
+        <br><br>
+        <input type="text" id="id1" placeholder="ID">
+        <br><br>
+        <button id="button">GET</button>
+    </center>
+    <script>
+        var params = [];
+        var par = [];
+        var id2 = "";
+        document.getElementById("button").addEventListener("click", getele);
+
+        function getele() {
+            var page = document.getElementById('page').value;
+            var name1 = document.getElementById('name1').value;
+            var name2 = document.getElementById('name2').value;
+            var id1 = document.getElementById('id1').value;
+            if (page !== "") {
+                params.push("page=" + page);
+            }
+            if (id1 !== "") {
+                id2 = "/" + id1;
+            }
+            if (name1 !== "") {
+                params.push("first_name=" + name1);
+            }
+            if (name2 !== "") {
+                params.push("last_name=" + name2);
+            }
+            par = id2 + "?" + params.join("&");
+            // console.log(par);
+            var myHeaders = new Headers();
+            myHeaders.append('authorization', 'Bearer 55A-3rhf2qkiXAIjRb27VMXElPJjK3gInWxj');
+            fetch('https://gorest.co.in/public-api/users' + par, {
+                    method: 'GET',
+                    headers: myHeaders
+                })
+                .then(response => response.json())
+                .then(data => console.log(data));
+        }
+
+    </script>
+</body>
+
+</html

@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DELETE</title>
+</head>
+
+<body>
+    <br><br><br><br><br>
+    <center>
+        <input type="text" id="page" placeholder="  Page">
+        <br><br>
+        <input type="text" id="name1" placeholder=" First Name">
+        <br><br>
+        <input type="text" id="name2" placeholder=" Last Name">
+        <br><br>
+        <input type="text" id="id1" placeholder="ID">
+        <br><br>
+        <button id="button">DELETE</button>
+    </center>
+    <script>
+        var params = [];
+        var par = [];
+        var id2 = "";
+        document.getElementById("button").addEventListener("click", DELETE);
+
+        function DELETE() {
+           
+            var myHeaders = new Headers();
+            myHeaders.append('authorization', 'Bearer 55A-3rhf2qkiXAIjRb27VMXElPJjK3gInWxj');
+            fetch('https://gorest.co.in/public-api/users' + id2, {
+                    method: 'DELETE',
+                    headers: myHeaders
+                })
+                .then(response => response.json())
+                .then(data => console.log(data));
+        }
+
+    </script>
+</body>
+
+</html

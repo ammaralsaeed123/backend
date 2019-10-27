@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>POST</title>
+</head>
+
+<body>
+    <br><br><br><br><br>
+    <center>
+        <input type="text" id="email" placeholder="email">
+        <br><br>
+        <input type="text" id="first" placeholder=" First Name">
+        <br><br>
+        <input type="text" id="last" placeholder=" Last Name">
+        <br><br>
+        <input type="text" id="gender" placeholder="gander">
+        <br><br>
+        <button id="button">POST</button>
+    </center>
+    <script>
+        var params = [];
+        var par = [];
+        var id2 = "";
+        document.getElementById("button").addEventListener("click", getele);
+
+        function getele() {
+            var email = document.getElementById('email').value;
+            var first = document.getElementById('first').value;
+            var last = document.getElementById('last').value;
+            var gender = document.getElementById('gender').value;
+            
+            // console.log(par);
+            var myHeaders = new Headers();
+
+            myHeaders.append('authorization', 'Bearer 55A-3rhf2qkiXAIjRb27VMXElPJjK3gInWxj');
+            myHeaders.append('Content-Type', 'application/json');
+
+            fetch('https://gorest.co.in/public-api/users', {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: JSON.stringify({
+                        first_name: first,
+                        last_name: last,
+                        email: email,
+                        gender: gender
+
+                    })
+                })
+
+                .then(response => response.json())
+                .then(data => console.log(data));
+        }
+    </script>
+</body>
+
+</html>

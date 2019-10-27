@@ -1,0 +1,74 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PUT</title>
+</head>
+
+<body>
+    <br><br><br><br><br>
+    <center>
+        <input type="text" id="email" placeholder="email">
+        <br><br>
+        <input type="text" id="first" placeholder=" First Name">
+        <br><br>
+        <input type="text" id="last" placeholder=" Last Name">
+        <br><br>
+        <input type="text" id="gender" placeholder="gander">
+        <br><br>
+        <input type="text" id="id" placeholder="ID">
+        <br><br>
+        <button id="button">put</button>
+    </center>
+    <script>
+        var params = [];
+        var par = [];
+        var id2 = "";
+        document.getElementById("button").addEventListener("click", getele);
+
+        function getele() {
+            var email = document.getElementById('email').value;
+            var first = document.getElementById('first').value;
+            var last = document.getElementById('last').value;
+            var gender = document.getElementById('gender').value;
+            var id = document.getElementById('id').value;
+            var obj = {};
+            if (id !== "") {
+                (obj.id = id);
+            }
+            if (first !== "") {
+                (obj.first_name = first);
+            }
+            if (last !== "") {
+                (last.last_name = last);
+            }
+            if (email !== "") {
+                (obj.email = email);
+            }
+            if (gender !== "") {
+                (obj.gender = gender);
+            }
+
+            var myHeaders = new Headers();
+
+            myHeaders.append('authorization', 'Bearer 55A-3rhf2qkiXAIjRb27VMXElPJjK3gInWxj');
+            myHeaders.append('Content-Type', 'application/json');
+
+            fetch('https://gorest.co.in/public-api/users/' + id, {
+                    method: 'PUT',
+                    headers: myHeaders,
+
+                    body: JSON.stringify(obj)
+                })
+
+                .then(response => response.json())
+
+                .then(data => console.log(data));
+        }
+
+    </script>
+</body>
+
+</html>
